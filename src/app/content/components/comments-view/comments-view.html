@@ -1,0 +1,22 @@
+<h1>Komentarze</h1>
+
+<input type="text" placeholder="Filtruj..." [(ngModel)]="filter" (keyup)="onFilter()">
+
+<div class="comments" *ngIf="data">
+  <table>
+    <thead>
+      <tr>
+        <th *ngFor="let item of table" (click)="item.sortable !== false ? onSort(item.key) : false">
+          <span>{{ item.name }}</span>
+          <sort-control [key]="item.key" [sortState]="sortState"></sort-control>
+        </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let comment of data">
+        <td *ngFor="let item of table">{{ comment[item.key] }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,22 @@
+<div class="user" *ngFor="let user of data">
+  <h1>{{ user.name }} <span>@{{ user.username }}</span></h1>
+
+  <div class="info">
+    <div class="unit">
+      <i class="ion-ios-email"></i>
+      <span>{{ user.email.toLowerCase() }}</span>
+    </div>
+
+    <div class="unit">
+      <i class="ion-ios-telephone"></i>
+      <span>{{ user.phone }}</span>
+    </div>
+
+    <div class="unit">
+      <i class="ion-earth"></i>
+      <span>
+        <a [href]="'http://' + user.website" target="_blank">{{ user.website }}</a>
+      </span>
+    </div>
+  </div>
+</div>

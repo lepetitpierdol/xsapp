@@ -1,0 +1,29 @@
+section.list {
+  height: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+
+  h2 {
+    font-size: 14px;
+    color: $gray;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  div.modes {
+    a {
+      display: block;
+      margin: 3px 0;
+      font-size: 17px;
+      font-family: 'Lora';
+      font-weight: 800;
+      color: $main;
+      text-decoration: none;
+      transition: all 0.3s;
+
+      &:hover {
+        color: $main-lighter;
+      }
+    }
+  }
+}

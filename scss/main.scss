@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900|Lora:400,400i,700,700i');
+@import 'colors';
+
+body {
+  background-color: $bg;
+  margin: 0 auto;
+  max-width: 960px;
+  font-family: 'Lora', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+header {
+  margin: 20px 0;
+  height: 40px;
+
+  h1 {
+    font-size: 30px;
+    color: $focus;
+    font-weight: 800;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    margin: 0;
+    transition: opacity 0.3s;
+    font-family: "Lato";
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
+
+div.container {
+  display: flex;
+  flex-direction: row;
+  border-radius: 10px;
+  box-sizing: border-box;
+  overflow: hidden;
+  margin: 0 auto;
+
+  > list {
+    width: 20%;
+  }
+
+  > content-parent-view {
+    width: 80%;
+  }
+}
+
+@import 'list';
+@import 'content';
