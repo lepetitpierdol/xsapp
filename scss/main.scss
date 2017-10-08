@@ -21,10 +21,11 @@ body {
 
 a {
   text-decoration: none;
-  color: #000;
+  color: $main;
   cursor: pointer;
 
   &:hover {
+    color: $main-lighter;
     text-decoration: underline;
   }
 }
@@ -32,6 +33,7 @@ a {
 header {
   margin: 20px 0;
   height: 40px;
+  outline: none;
 
   h1 {
     font-size: 30px;
@@ -42,6 +44,7 @@ header {
     margin: 0;
     transition: opacity 0.3s;
     font-family: 'Lato';
+    cursor: pointer;
 
     &:hover {
       opacity: 0.8;
@@ -61,8 +64,17 @@ div.container {
     width: 20%;
   }
 
-  > content-parent-view {
+  > root, content-parent-view {
     width: 80%;
+  }
+
+  div.not-chosen {
+    font-size: 30px;
+    color: $gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
   }
 }
 
@@ -93,6 +105,13 @@ div.notification {
   &.hide {
     opacity: 0;
   }
+}
+
+footer {
+  margin: 20px 0;
+  font-size: 13px;
+  color: $gray;
+  text-align: center;
 }
 
 @import 'list';

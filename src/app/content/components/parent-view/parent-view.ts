@@ -1,4 +1,5 @@
 import {Component, Input} from '@angular/core';
+import {ActivatedRoute, Params} from '@angular/router';
 import {APIService, Response} from '../../../common/services/api';
 import {ErrorHandlerService} from '../../../common/services/error-handler';
 import {IPost} from '../../interfaces/post';
@@ -10,22 +11,24 @@ import {IUser} from '../../interfaces/user';
   template: require('./parent-view.html')
 })
 export class ContentParentViewComponent {
-  private mode: string;
   private data: Array<IPost | IUser | IComment>;
+  private mode: string;
 
-  constructor(private errors: ErrorHandlerService, private apiService: APIService) {
-
+  constructor(private route: ActivatedRoute, private errors: ErrorHandlerService, private apiService: APIService) {
+    this.route.params.subscribe((params: Params) => {
+      this.mode = params.mode;
+      this.injectChild();
+    });
   }
 
-  @Input('mode') set onModeSet(mode: string) {
-    if (!mode) {
+  injectChild(): void {
+    if (!this.mode) {
       return;
     }
 
     this.data = undefined;
-    this.mode = mode;
 
-    this.apiService.request(`/${mode}`)
+    this.apiService.request(`/${this.mode}`)
       .then((res: Response) => {
         try {
           this.data = res.json();

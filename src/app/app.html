@@ -1,12 +1,17 @@
-<header>
+<header [routerLink]="['/']">
   <h1>XSApp</h1>
 </header>
-
+  
 <div class="container">
-  <list (onModeSelected)="onModeSelected($event)"></list>
-  <content-parent-view [mode]="mode"></content-parent-view>
+  <list></list>
+
+  <router-outlet></router-outlet>
+
+  <div class="notification" [ngClass]="{'show': notification, 'hide': !notification}">
+      {{ notification }}
+    </div>
 </div>
 
-<div class="notification" [ngClass]="{'show': notification, 'hide': !notification}">
-  {{ notification }}
-</div>
+<footer>
+  &copy; Made by <a href="https://pandarosso.eu" target="_blank">Pandarosso</a>
+</footer>

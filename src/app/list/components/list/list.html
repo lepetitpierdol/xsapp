@@ -2,8 +2,8 @@
   <h2>Wybierz treść</h2>
 
   <div class="modes">
-    <a (click)="onModeSelect('users')">Użytkownicy</a>
-    <a (click)="onModeSelect('comments')">Komentarze</a>
-    <a (click)="onModeSelect('posts')">Posty</a>
+    <a [routerLink]="['/users']">Użytkownicy</a>
+    <a [routerLink]="['/comments']">Komentarze</a>
+    <a [routerLink]="['/posts']">Posty</a>
   </div>
 </section>

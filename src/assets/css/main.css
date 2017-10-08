@@ -22,14 +22,16 @@ body {
 
 a {
   text-decoration: none;
-  color: #000;
+  color: #E97979;
   cursor: pointer; }
   a:hover {
+    color: #EBA4A4;
     text-decoration: underline; }
 
 header {
   margin: 20px 0;
-  height: 40px; }
+  height: 40px;
+  outline: none; }
   header h1 {
     font-size: 30px;
     color: #FF6666;
@@ -38,7 +40,8 @@ header {
     transition: all 0.3s;
     margin: 0;
     transition: opacity 0.3s;
-    font-family: 'Lato'; }
+    font-family: 'Lato';
+    cursor: pointer; }
     header h1:hover {
       opacity: 0.8; }
 
@@ -51,8 +54,15 @@ div.container {
   margin: 0 auto; }
   div.container > list {
     width: 20%; }
-  div.container > content-parent-view {
+  div.container > root, div.container content-parent-view {
     width: 80%; }
+  div.container div.not-chosen {
+    font-size: 30px;
+    color: #999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%; }
 
 div.notification {
   position: fixed;
@@ -78,6 +88,12 @@ div.notification {
   div.notification.hide {
     opacity: 0; }
 
+footer {
+  margin: 20px 0;
+  font-size: 13px;
+  color: #999;
+  text-align: center; }
+
 section.list {
   height: 100%;
   padding: 20px;
@@ -102,13 +118,6 @@ section.list {
 section.content-view {
   height: 100%;
   padding: 0 0 20px; }
-  section.content-view div.not-chosen {
-    font-size: 30px;
-    color: #999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%; }
   section.content-view h1 {
     font-size: 40px;
     color: #E97979;
