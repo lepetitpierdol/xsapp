@@ -1,0 +1,8 @@
+<div class="pagination">
+  <a (click)="onPrevPage()"><i class="ion-chevron-left"></i></a>
+  <span>Strona {{ pagination.currentPage + 1 }} z {{ getMaxPages() }}</span>
+  <a (click)="onNextPage()"><i class="ion-chevron-right"></i></a>
+</div>
+<div class="pagination-settings">
+  Po <input type="number" [value]="pagination.perPage" (keyup)="onPerPageChange($event)"> na stronie
+</div>

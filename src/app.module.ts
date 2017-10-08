@@ -7,23 +7,25 @@ import {HttpModule} from '@angular/http';
 import {AppComponent} from './app/app';
 import {ListComponent} from './app/list/components/list/list';
 import {ContentParentViewComponent} from './app/content/components/parent-view/parent-view';
-import {ContentPostsViewComponent} from './app/content/components/posts-view/posts-view';
 import {ContentUsersViewComponent} from './app/content/components/users-view/users-view';
-import {ContentCommentsViewComponent} from './app/content/components/comments-view/comments-view';
 import {SortControlComponent} from './app/content/components/sort-control/sort-control';
+import {PaginationComponent} from './app/content/components/pagination/pagination';
+import {ContentTableViewComponent} from './app/content/components/table-view/table-view';
 
 // Services
 import {APIService} from './app/common/services/api';
+import {ErrorHandlerService} from './app/common/services/error-handler';
+import {NotificationService} from './app/common/services/notification';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListComponent,
     ContentParentViewComponent,
-    ContentPostsViewComponent,
     ContentUsersViewComponent,
-    ContentCommentsViewComponent,
-    SortControlComponent
+    SortControlComponent,
+    PaginationComponent,
+    ContentTableViewComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +33,9 @@ import {APIService} from './app/common/services/api';
     HttpModule
   ],
   providers: [
-    APIService
+    APIService,
+    ErrorHandlerService,
+    NotificationService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,24 @@
+<h1 *ngIf="mode">{{ mode === 'posts' ? 'Posty' : 'Komentarze' }}</h1>
+
+<input type="text" placeholder="Filtruj..." [(ngModel)]="filter" (keyup)="onFilter()">
+
+<div class="comments" *ngIf="data && mode">
+  <table>
+    <thead>
+      <tr>
+        <th *ngFor="let item of table[mode]" (click)="item.sortable !== false ? onSort(item.key) : false">
+          <span>{{ item.name }}</span>
+          <sort-control [key]="item.key" [sortState]="sortState"></sort-control>
+        </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let comment of data | slice : pagination.perPage * pagination.currentPage : (pagination.currentPage * pagination.perPage) + pagination.perPage">
+        <td *ngFor="let item of table[mode]" [width]="item.width">{{ comment[item.key] }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <pagination [pagination]="pagination" (onPerPageChange)="onPerPageChange($event)" [count]="data.length" (onNext)="onNextPage()" (onPrev)="onPrevPage()"></pagination>
+</div>

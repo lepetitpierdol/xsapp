@@ -1,7 +1,6 @@
 <section class="content-view">
-  <content-posts-view *ngIf="mode === 'posts'" [data]="data"></content-posts-view>
   <content-users-view *ngIf="mode === 'users'" [data]="data"></content-users-view>
-  <content-comments-view *ngIf="mode === 'comments'" [data]="data"></content-comments-view>  
+  <content-table-view *ngIf="['posts', 'comments'].indexOf(mode) > -1" [mode]="mode" [data]="data"></content-table-view>
 
   <div class="not-chosen" *ngIf="['posts', 'users', 'comments'].indexOf(mode) === -1">
     Nie ma treści

@@ -4,6 +4,7 @@ import {IComment} from '../../interfaces/comment';
 import {IPost} from '../../interfaces/post';
 import {SORT_ORDER} from '../../enums/sort-order';
 import {ISortState} from '../../interfaces/sort-state';
+import {IPagination} from '../../interfaces/pagination';
 import * as _ from 'lodash';
 
 @Component({
@@ -11,15 +12,26 @@ import * as _ from 'lodash';
   template: ''
 })
 export class AbstractViewComponent {
-  private filter: string = '';
+  @Input('mode') mode: string;
 
   private originalData: Array<IPost | IUser | IComment>;
   protected data: Array<IPost | IUser | IComment>;
 
+  private perPageLocalStorageKey: string = '_tableViewPerPage';
+  private filter: string = '';
   protected sortState: ISortState = {field: 'id', order: SORT_ORDER.ASC};
 
-  constructor() {
+  protected pagination: IPagination = {
+    perPage: 10,
+    currentPage: 0
+  };
 
+  constructor() {
+    let savedPerPageValue = window.localStorage.getItem(this.perPageLocalStorageKey);
+    
+    if (savedPerPageValue) {
+      this.pagination.perPage = parseInt(savedPerPageValue);
+    }
   }
 
   @Input('data') set onDataSet(data: Array<IPost | IUser | IComment>) {
@@ -49,6 +61,7 @@ export class AbstractViewComponent {
       }
     }
 
+    this.pagination.currentPage = 0;
     this.data = results;
   }
 
@@ -62,5 +75,29 @@ export class AbstractViewComponent {
     this.sortState.field = field;
 
     this.data = _.orderBy(this.data, [field], [(this.sortState.order ? 'asc': 'desc')]);
+    this.pagination.currentPage = 0;
+  }
+
+  onNextPage(): void {
+    if (this.pagination.currentPage >= ((this.data.length / this.pagination.perPage) - 1)) {
+      return;
+    }
+
+    this.pagination.currentPage++;
+  }
+
+  onPrevPage(): void {
+    if (this.pagination.currentPage === 0) {
+      return;
+    }
+
+    this.pagination.currentPage--;
+  }
+
+  onPerPageChange(newPerPageValue: number): void {
+    this.pagination.currentPage = 0;
+    this.pagination.perPage = newPerPageValue;
+
+    window.localStorage.setItem(this.perPageLocalStorageKey, this.pagination.perPage.toString());
   }
 }

@@ -6,7 +6,5 @@ import {AbstractViewComponent} from '../abstract-view/abstract-view'
   template: require('./users-view.html')
 })
 export class ContentUsersViewComponent extends AbstractViewComponent {
-  constructor() {
-    super();
-  }
+
 }

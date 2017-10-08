@@ -3,7 +3,22 @@ body {
   background-color: #FFE1EA;
   margin: 0 auto;
   max-width: 960px;
+  min-width: 960px;
   font-family: 'Lora', sans-serif; }
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    visibility: visible; }
+  100% {
+    opacity: 0;
+    visibility: hidden; } }
 
 a {
   text-decoration: none;
@@ -23,7 +38,7 @@ header {
     transition: all 0.3s;
     margin: 0;
     transition: opacity 0.3s;
-    font-family: "Lato"; }
+    font-family: 'Lato'; }
     header h1:hover {
       opacity: 0.8; }
 
@@ -38,6 +53,30 @@ div.container {
     width: 20%; }
   div.container > content-parent-view {
     width: 80%; }
+
+div.notification {
+  position: fixed;
+  bottom: 0px;
+  left: 0;
+  text-align: center;
+  width: 100%;
+  height: 40px;
+  background-color: #FF6666;
+  margin: 0 auto;
+  font-size: 16px;
+  font-family: 'Lato';
+  color: #fff;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  align-items: center;
+  font-weight: 400;
+  transition: opacity 0.3s;
+  pointer-events: none; }
+  div.notification.show {
+    opacity: 1; }
+  div.notification.hide {
+    opacity: 0; }
 
 section.list {
   height: 100%;
@@ -61,7 +100,8 @@ section.list {
       color: #EBA4A4; }
 
 section.content-view {
-  height: 100%; }
+  height: 100%;
+  padding: 0 0 20px; }
   section.content-view div.not-chosen {
     font-size: 30px;
     color: #999;
@@ -103,7 +143,33 @@ section.content-view {
         margin-left: 3px; }
         section.content-view div.user div.info div.unit span a {
           color: #999; }
+  section.content-view div.pagination {
+    margin: 20px 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; }
+    section.content-view div.pagination span {
+      color: #777;
+      font-weight: 800;
+      font-size: 16px; }
+    section.content-view div.pagination a {
+      color: #999;
+      padding: 0 20px;
+      font-size: 18px; }
+      section.content-view div.pagination a:hover {
+        color: #E97979; }
+  section.content-view div.pagination-settings {
+    text-align: center;
+    font-size: 14px;
+    color: #999; }
+    section.content-view div.pagination-settings input {
+      width: 30px;
+      text-align: center; }
+      section.content-view div.pagination-settings input::-webkit-inner-spin-button {
+        display: none; }
   section.content-view table {
+    width: 100%;
     background-color: #fff;
     margin: 30px 0;
     border-collapse: collapse;
